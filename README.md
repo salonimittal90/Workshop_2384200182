@@ -9,3 +9,8 @@ Workshop Section 02
 UC 1: Introduce DTO and Model for Address Book
 UC 2: Implement Address Book Service Layer
 
+Workshop section 03
+
+UC 1: Implement User Registration & Login
+UC 2: Implement Forgot & Reset Password
+
