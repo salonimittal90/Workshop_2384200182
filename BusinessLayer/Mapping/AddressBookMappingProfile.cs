@@ -18,6 +18,10 @@ namespace BusinessLayer.Mapping
 
             // DTO -> Entity mapping (useful when saving data)
             CreateMap<AddressBookDTO, AddressBookEntity>();
+
+            // UserDTO to UserEntity Mapping
+            CreateMap<UserDTO, UserEntity>()
+           .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.Password)); // Map Password to PasswordHash
         }
     }
 }
