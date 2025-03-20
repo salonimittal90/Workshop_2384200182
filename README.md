@@ -14,3 +14,7 @@ Workshop section 03
 UC 1: Implement User Registration & Login
 UC 2: Implement Forgot & Reset Password
 
+Workshop section 04
+UC 1: Integrate Redis for Caching
+UC 2: Integrate RabbitMQ for Event-Driven Messaging
+
