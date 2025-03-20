@@ -22,5 +22,7 @@ namespace RepositoryLayer.Entity
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+
     }
 }

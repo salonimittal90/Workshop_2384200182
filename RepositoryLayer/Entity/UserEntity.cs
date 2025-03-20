@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -30,5 +31,9 @@ namespace RepositoryLayer.Entity
 
         [JsonIgnore]
         public DateTime? ResetTokenExpiry { get; set; }
+
+        // Yeh field sirf response me dikhne ke liye hai
+        [NotMapped]
+        public string Source { get; set; }
     }
 }

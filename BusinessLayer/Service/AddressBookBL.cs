@@ -12,10 +12,13 @@ namespace BusinessLayer.Service
     public class AddressBookBL : IAddressBookBL
     {
         IAddressBookRL _addressRL;
+        private readonly RabbitMQService _rabbitMQService;
 
-        public AddressBookBL(IAddressBookRL addressRL)
+
+        public AddressBookBL(IAddressBookRL addressRL, RabbitMQService rabbitMQService)
         {
             _addressRL = addressRL;
+            _rabbitMQService = rabbitMQService;
         }
         public List<AddressBookEntity> GetAllContacts()
         {
@@ -27,7 +30,17 @@ namespace BusinessLayer.Service
         }
         public AddressBookEntity AddContact(AddressBookEntity contact)
         {
-            return _addressRL.AddContact(contact);
+            // return _addressRL.AddContact(contact);
+
+
+            // rabbitmq se contact add hone lka event publish krna 
+            var addedContact = _addressRL.AddContact(contact);
+
+            // RabbitMQ me event publish karo
+            var message = $"New contact added: {addedContact.Name}, {addedContact.Email}";
+            _rabbitMQService.PublishMessage("ContactAddedQueue", message);
+
+            return addedContact;
         }
         public AddressBookEntity UpdateContact( int id, AddressBookEntity contact)
         {
